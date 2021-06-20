@@ -48,7 +48,14 @@ const App = () => {
                 setEventMessage(null)
               }, 5000)
             })
-
+            .catch(error => {
+              setIsError(true)
+              setEventMessage(error.response.data.error)
+              setTimeout(() => {
+                setEventMessage(null)
+                setIsError(false)
+              }, 5000)
+            })
         }
         return (
           setEventMessage(
@@ -71,6 +78,14 @@ const App = () => {
           )
           setTimeout(() => {
             setEventMessage(null)
+          }, 5000)
+        })
+        .catch(error => {
+          setIsError(true)
+          setEventMessage(error.response.data.error)
+          setTimeout(() => {
+            setEventMessage(null)
+            setIsError(false)
           }, 5000)
         })
     }
